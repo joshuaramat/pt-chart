@@ -3,7 +3,7 @@ const patientData = {
   datasets: [
     {
       label: "Patient Volume",
-      data: [3, 7, 5, 10, 12, 8, 6, 11, 13, 9, 5, 2, 1],
+      data: [0,0,0,0,0,0,0,0,0,0,0,0,0,],
       backgroundColor: "rgba(54, 162, 235, 0.2)",
       borderColor: "rgba(54, 162, 235, 1)",
       borderWidth: 1,
