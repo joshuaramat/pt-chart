@@ -1,45 +1,43 @@
-import React, { useState } from "react";
-import patientData from "../data/patientData";
+import React, { useState } from 'react';
 
-const PatientVolumeForm = (props) => {
-  const [formData, setFormData] = useState([]);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+const PatientVolumeForm = ({ labels, data, location }) => {
+  const [patientVolume, setPatientVolume] = useState(data);
 
-  const hours = patientData.labels;
-
-  const handleInputChange = (e,index) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => {
-      const newData = [...prevFormData];
-      newData[index] = parseInt(value);
-      return newData;
-    });
+  const handleChange = (event, index) => {
+    const newPatientVolume = [...patientVolume];
+    newPatientVolume[index] = parseInt(event.target.value);
+    setPatientVolume(newPatientVolume);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newData = {...patientData};
-    newData.datasets[0].data = formData;
-    props.onPatientDataUpdate(newData);
-    setFormSubmitted(true);
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(patientVolume);
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {hours.map((hour, index) => (
-        <label key={hour}>
-          {hour}
+    <form 
+      onSubmit={handleSubmit}
+      style={{
+        display: 'flex',
+      }}
+    >
+      <h3>{location}</h3>
+      {labels.map((label, index) => (
+        <div key={index}>
+          <label htmlFor={`hour${index}`}>{label}</label>
           <input
+            id={`hour${index}`}
             type="number"
-            name={hour}
-            value={formData[index] || patientData.datasets[0].data[index]}
-            onChange={(e) => handleInputChange(e, index)}
+            min="0"
+            max="99"
+            value={patientVolume[index]}
+            onChange={(event) => handleChange(event, index)}
           />
-        </label>
+        </div>
       ))}
-      <button type="submit">Submit</button>
+      <button type="submit">Update</button>
     </form>
   );
-}
+};
 
 export default PatientVolumeForm;

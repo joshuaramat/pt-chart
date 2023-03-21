@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
-import Chart from './components/Chart'
+import React from 'react';
+import PatientVolumeChart from './components/PatientVolumeChart';
 import PatientVolumeForm from './components/PatientVolumeForm';
 
-import patientData from './data/patientData';
+import frPatientData from './data/frPatientData';
+import dbPatientData from './data/dbPatientData';
 
 function App() {
-  const [updatedPatientData, setUpdatedPatientData] = useState(patientData);
-
-  const handleSubmit = (formData) => {
-    const newData = {...patientData};
-    newData.datasets[0].data = formData;
-    setUpdatedPatientData(newData);
-  }
 
   return (
     <div>
-      <Chart patientData={updatedPatientData}  />
-      <PatientVolumeForm onPatientDataUpdate={handleSubmit} />
+      <PatientVolumeForm 
+        labels={frPatientData.labels} 
+        data={frPatientData.datasets[0].data} 
+        location='Fremont'
+      />
+      <PatientVolumeForm 
+        labels={dbPatientData.labels} 
+        data={dbPatientData.datasets[0].data} 
+        location='Dublin'
+      />
+      <PatientVolumeChart 
+        patientData={frPatientData} 
+        location='Fremont'
+      />
+      <PatientVolumeChart 
+        patientData={dbPatientData} 
+        location='Dublin'
+      />
     </div>
   );
 }
