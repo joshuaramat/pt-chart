@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PatientVolumeForm = ({ labels, data, location }) => {
+const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
   const [patientVolume, setPatientVolume] = useState(data);
 
   const handleChange = (event, index) => {
@@ -11,7 +11,7 @@ const PatientVolumeForm = ({ labels, data, location }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(patientVolume);
+    onSubmit(location, patientVolume);
   };
 
   return (

@@ -10,6 +10,7 @@ ChartJS.register(
 
 const PatientVolumeChart = ({patientData, location}) => {
   const options = {}
+  console.log('patientData', patientData)
 
   return (
     <div>
