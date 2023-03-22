@@ -6,32 +6,46 @@ import frPatientData from './data/frPatientData';
 import dbPatientData from './data/dbPatientData';
 
 function App() {
-  const [frPatientVolume, setFrPatientVolume] = useState(frPatientData);
-  const [dbPatientVolume, setDbPatientVolume] = useState(dbPatientData);
+  const [frPatientVolume, setFrPatientVolume] = useState(
+    localStorage.getItem('frPatientVolume')
+      ? JSON.parse(localStorage.getItem('frPatientVolume'))
+      : frPatientData
+  );
+  const [dbPatientVolume, setDbPatientVolume] = useState(
+    localStorage.getItem('dbPatientVolume')
+      ? JSON.parse(localStorage.getItem('dbPatientVolume'))
+      : dbPatientData
+  );
+  
 
   const handleFormSubmit = (location, newData) => {
     if (location === 'Fremont') {
-      setFrPatientVolume(prevState => ({
-        ...prevState,
+      const newFrPatientVolume = {
+        ...frPatientVolume,
         datasets: [
           {
-            ...prevState.datasets[0],
+            ...frPatientVolume.datasets[0],
             data: newData
           }
         ]
-      }));
+      };
+      setFrPatientVolume(newFrPatientVolume);
+      localStorage.setItem('frPatientVolume', JSON.stringify(newFrPatientVolume));
     } else if (location === 'Dublin') {
-      setDbPatientVolume(prevState => ({
-        ...prevState,
+      const newDbPatientVolume = {
+        ...dbPatientVolume,
         datasets: [
           {
-            ...prevState.datasets[0],
+            ...dbPatientVolume.datasets[0],
             data: newData
           }
         ]
-      }));
+      };
+      setDbPatientVolume(newDbPatientVolume);
+      localStorage.setItem('dbPatientVolume', JSON.stringify(newDbPatientVolume));
     }
   };
+  
   
 
   return (
