@@ -18,7 +18,6 @@ function App() {
       : dbPatientData
   );
   
-
   const handleFormSubmit = (location, newData) => {
     if (location === 'Fremont') {
       const newFrPatientVolume = {
@@ -26,7 +25,7 @@ function App() {
         datasets: [
           {
             ...frPatientVolume.datasets[0],
-            data: newData
+            data: newData.map(Number) // Convert string array to number array
           }
         ]
       };
@@ -38,7 +37,7 @@ function App() {
         datasets: [
           {
             ...dbPatientVolume.datasets[0],
-            data: newData
+            data: newData.map(Number) // Convert string array to number array
           }
         ]
       };
@@ -46,8 +45,6 @@ function App() {
       localStorage.setItem('dbPatientVolume', JSON.stringify(newDbPatientVolume));
     }
   };
-  
-  
 
   return (
     <div>
