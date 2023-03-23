@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PatientVolumeChart from './components/PatientVolumeChart';
 import PatientVolumeForm from './components/PatientVolumeForm';
+import Hero from './components/Hero/Hero';
 
 import frPatientData from './data/frPatientData';
 import dbPatientData from './data/dbPatientData';
@@ -50,25 +51,25 @@ function App() {
 
   return (
     <div>
-      <PatientVolumeForm 
-        labels={frPatientData.labels} 
-        data={frPatientData.datasets[0].data} 
-        location='Fremont'
-        onSubmit={handleFormSubmit}
-      />
-      <PatientVolumeForm 
-        labels={dbPatientData.labels} 
-        data={dbPatientData.datasets[0].data} 
-        location='Dublin'
-        onSubmit={handleFormSubmit}
-      />
+      <Hero />
       <PatientVolumeChart 
         patientData={frPatientVolume} 
         location='Fremont'
       />
+      <PatientVolumeForm 
+        labels={frPatientData.labels} 
+        data={frPatientData.datasets[0].data} 
+        onSubmit={handleFormSubmit}
+      />
+      <hr />
       <PatientVolumeChart 
         patientData={dbPatientVolume} 
         location='Dublin'
+      />
+      <PatientVolumeForm 
+        labels={dbPatientData.labels} 
+        data={dbPatientData.datasets[0].data}
+        onSubmit={handleFormSubmit}
       />
     </div>
   );
