@@ -50,25 +50,26 @@ function App() {
 
   return (
     <div>
+      <PatientVolumeChart 
+        patientData={frPatientVolume} 
+        location='Fremont'
+      />
       <PatientVolumeForm 
         labels={frPatientData.labels} 
         data={frPatientData.datasets[0].data} 
         location='Fremont'
         onSubmit={handleFormSubmit}
       />
+      <hr />
+      <PatientVolumeChart 
+        patientData={dbPatientVolume} 
+        location='Dublin'
+      />
       <PatientVolumeForm 
         labels={dbPatientData.labels} 
         data={dbPatientData.datasets[0].data} 
         location='Dublin'
         onSubmit={handleFormSubmit}
-      />
-      <PatientVolumeChart 
-        patientData={frPatientVolume} 
-        location='Fremont'
-      />
-      <PatientVolumeChart 
-        patientData={dbPatientVolume} 
-        location='Dublin'
       />
     </div>
   );
