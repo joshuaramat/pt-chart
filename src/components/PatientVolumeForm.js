@@ -27,6 +27,10 @@ const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
       onSubmit={handleSubmit}
       style={{
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: '0 auto',
+        padding: '2rem'
       }}
     >
       {labels.map((label, index) => (

@@ -17,8 +17,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  max-width: 800px;
+  min-height: 100%;
+  max-width: 800%;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -27,6 +27,10 @@
   font-size: 3rem;
   margin: 1rem 0;
   line-height: 1.2;
+}
+
+p {
+  max-width: 61.8%;
 }
 
 span {
