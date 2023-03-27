@@ -57,6 +57,7 @@ function App() {
         labels={frPatientData.labels} 
         data={frPatientData.datasets[0].data} 
         onSubmit={handleFormSubmit}
+        location='Fremont'
       />
       <hr />
       <PatientVolumeChart 
@@ -67,6 +68,7 @@ function App() {
         labels={dbPatientData.labels} 
         data={dbPatientData.datasets[0].data}
         onSubmit={handleFormSubmit}
+        location='Dublin'
       />
     </div>
   );

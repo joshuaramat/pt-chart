@@ -29,7 +29,6 @@ const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
         display: 'flex',
       }}
     >
-      <h3>{location}</h3>
       {labels.map((label, index) => (
         <div key={index}>
           <label htmlFor={`hour${index}`}>{label}</label>
