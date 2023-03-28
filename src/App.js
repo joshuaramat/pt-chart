@@ -17,6 +17,7 @@ function App() {
       ? JSON.parse(localStorage.getItem('dbPatientVolume'))
       : dbPatientData
   );
+  const [activeLocation, setActiveLocation] = useState('');
   
   const handleFormSubmit = (location, newData) => {
     if (location === 'Fremont') {
@@ -48,38 +49,36 @@ function App() {
 
   return (
     <div>
-      <Hero />
-      <PatientVolumeChart 
-        patientData={frPatientVolume} 
-        location='Fremont'
-      />
-      <PatientVolumeForm 
-        labels={frPatientData.labels} 
-        data={frPatientData.datasets[0].data} 
-        location='Fremont'
-      />
-      <hr />
-      <PatientVolumeChart 
-        patientData={dbPatientVolume} 
-        location='Dublin'
-      />
-      <PatientVolumeForm 
-        labels={frPatientData.labels} 
-        data={frPatientData.datasets[0].data} 
-        onSubmit={handleFormSubmit}
-        location='Fremont'
-      />
-      <hr />
-      <PatientVolumeChart 
-        patientData={dbPatientVolume} 
-        location='Dublin'
-      />
-      <PatientVolumeForm 
-        labels={dbPatientData.labels} 
-        data={dbPatientData.datasets[0].data}
-        onSubmit={handleFormSubmit}
-        location='Dublin'
-      />
+      <Hero onLocationSelect={setActiveLocation} />
+
+      {activeLocation === 'Fremont' && (
+        <>
+          <PatientVolumeChart 
+            patientData={frPatientVolume} 
+            location='Fremont'
+          />
+          <PatientVolumeForm 
+            labels={frPatientData.labels} 
+            data={frPatientData.datasets[0].data} 
+            location='Fremont'
+          />
+        </>
+      )}
+    
+      {activeLocation === 'Dublin' && (
+        <>
+          <PatientVolumeChart 
+            patientData={dbPatientVolume} 
+            location='Dublin'
+          />
+          <PatientVolumeForm 
+            labels={dbPatientData.labels} 
+            data={dbPatientData.datasets[0].data}
+            onSubmit={handleFormSubmit}
+            location='Dublin'
+          />
+        </>
+      )}
     </div>
   );
 }
