@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PatientVolumeChart from './components/PatientVolumeChart';
 import PatientVolumeForm from './components/PatientVolumeForm';
+import Hero from './components/Hero/Hero';
 
 import frPatientData from './data/frPatientData';
 import dbPatientData from './data/dbPatientData';
@@ -17,7 +18,6 @@ function App() {
       : dbPatientData
   );
   
-
   const handleFormSubmit = (location, newData) => {
     if (location === 'Fremont') {
       const newFrPatientVolume = {
@@ -25,7 +25,7 @@ function App() {
         datasets: [
           {
             ...frPatientVolume.datasets[0],
-            data: newData
+            data: newData.map(Number) // Convert string array to number array
           }
         ]
       };
@@ -37,7 +37,7 @@ function App() {
         datasets: [
           {
             ...dbPatientVolume.datasets[0],
-            data: newData
+            data: newData.map(Number) // Convert string array to number array
           }
         ]
       };
@@ -45,11 +45,12 @@ function App() {
       localStorage.setItem('dbPatientVolume', JSON.stringify(newDbPatientVolume));
     }
   };
-  
-  
 
   return (
     <div>
+      <Hero />
+      <PatientVolumeChart 
+        patientData={frPatientVolume} 
       <PatientVolumeChart 
         patientData={frPatientVolume} 
         location='Fremont'
@@ -58,7 +59,17 @@ function App() {
         labels={frPatientData.labels} 
         data={frPatientData.datasets[0].data} 
         location='Fremont'
+      />
+      <hr />
+      <PatientVolumeChart 
+        patientData={dbPatientVolume} 
+        location='Dublin'
+      />
+      <PatientVolumeForm 
+        labels={frPatientData.labels} 
+        data={frPatientData.datasets[0].data} 
         onSubmit={handleFormSubmit}
+        location='Fremont'
       />
       <hr />
       <PatientVolumeChart 
@@ -67,9 +78,9 @@ function App() {
       />
       <PatientVolumeForm 
         labels={dbPatientData.labels} 
-        data={dbPatientData.datasets[0].data} 
-        location='Dublin'
+        data={dbPatientData.datasets[0].data}
         onSubmit={handleFormSubmit}
+        location='Dublin'
       />
     </div>
   );

@@ -4,14 +4,22 @@ const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
   const [patientVolume, setPatientVolume] = useState(data);
 
   const handleChange = (event, index) => {
+    const newValue = parseInt(event.target.value);
     const newPatientVolume = [...patientVolume];
-    newPatientVolume[index] = parseInt(event.target.value);
+    if (isNaN(newValue)) {
+      newPatientVolume[index] = 0;
+    } else {
+      newPatientVolume[index] = newValue;
+    }
     setPatientVolume(newPatientVolume);
   };
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(location, patientVolume);
+    console.log('handleSubmit called')
+    console.log('patientVolume', patientVolume)
   };
 
   return (
@@ -19,6 +27,10 @@ const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
       onSubmit={handleSubmit}
       style={{
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: '0 auto',
+        padding: '2rem'
       }}
     >
       {labels.map((label, index) => (
@@ -28,7 +40,7 @@ const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
             id={`hour${index}`}
             type="number"
             min="0"
-            max="99"
+            max="999"
             value={patientVolume[index]}
             onChange={(event) => handleChange(event, index)}
           />

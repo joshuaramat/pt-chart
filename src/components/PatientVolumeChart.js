@@ -32,6 +32,9 @@ const PatientVolumeChart = ({patientData, location}) => {
         <Bar
           data = { patientData }
           options = { options }
+          style={{
+            maxWidth: '90%'
+          }}
         />
       </div>
     </div>
