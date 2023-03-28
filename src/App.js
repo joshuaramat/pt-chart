@@ -51,7 +51,19 @@ function App() {
       <Hero />
       <PatientVolumeChart 
         patientData={frPatientVolume} 
+      <PatientVolumeChart 
+        patientData={frPatientVolume} 
         location='Fremont'
+      />
+      <PatientVolumeForm 
+        labels={frPatientData.labels} 
+        data={frPatientData.datasets[0].data} 
+        location='Fremont'
+      />
+      <hr />
+      <PatientVolumeChart 
+        patientData={dbPatientVolume} 
+        location='Dublin'
       />
       <PatientVolumeForm 
         labels={frPatientData.labels} 
