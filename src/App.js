@@ -51,8 +51,6 @@ function App() {
       <Hero />
       <PatientVolumeChart 
         patientData={frPatientVolume} 
-      <PatientVolumeChart 
-        patientData={frPatientVolume} 
         location='Fremont'
       />
       <PatientVolumeForm 
