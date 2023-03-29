@@ -3,47 +3,42 @@ import PatientVolumeChart from './components/PatientVolumeChart';
 import PatientVolumeForm from './components/PatientVolumeForm';
 import Hero from './components/Hero/Hero';
 
-import frPatientData from './data/frPatientData';
-import dbPatientData from './data/dbPatientData';
+import patientData from './data/patientData';
 
 function App() {
+  const [frData, setFrData] = useState(patientData.datasets[0].data);
+  const [dbData, setDbData] = useState(patientData.datasets[0].data);
   const [frPatientVolume, setFrPatientVolume] = useState(
     localStorage.getItem('frPatientVolume')
       ? JSON.parse(localStorage.getItem('frPatientVolume'))
-      : frPatientData
+      : patientData
   );
   const [dbPatientVolume, setDbPatientVolume] = useState(
     localStorage.getItem('dbPatientVolume')
       ? JSON.parse(localStorage.getItem('dbPatientVolume'))
-      : dbPatientData
+      : patientData
   );
   const [activeLocation, setActiveLocation] = useState('');
+
+  function updatePatientVolume(location, newData, setPatientVolume, patientVolumeData) {
+    const newPatientVolume = {
+      ...patientVolumeData,
+      datasets: [
+        {
+          ...patientVolumeData.datasets[0],
+          data: newData.map(Number) // Convert string array to number array
+        }
+      ]
+    };
+    setPatientVolume(newPatientVolume);
+    localStorage.setItem(`${location}PatientVolume`, JSON.stringify(newPatientVolume));
+  }
   
   const handleFormSubmit = (location, newData) => {
     if (location === 'Fremont') {
-      const newFrPatientVolume = {
-        ...frPatientVolume,
-        datasets: [
-          {
-            ...frPatientVolume.datasets[0],
-            data: newData.map(Number) // Convert string array to number array
-          }
-        ]
-      };
-      setFrPatientVolume(newFrPatientVolume);
-      localStorage.setItem('frPatientVolume', JSON.stringify(newFrPatientVolume));
+      updatePatientVolume(location, newData, setFrPatientVolume, frPatientVolume);
     } else if (location === 'Dublin') {
-      const newDbPatientVolume = {
-        ...dbPatientVolume,
-        datasets: [
-          {
-            ...dbPatientVolume.datasets[0],
-            data: newData.map(Number) // Convert string array to number array
-          }
-        ]
-      };
-      setDbPatientVolume(newDbPatientVolume);
-      localStorage.setItem('dbPatientVolume', JSON.stringify(newDbPatientVolume));
+      updatePatientVolume(location, newData, setDbPatientVolume, dbPatientVolume);
     }
   };
 
@@ -54,12 +49,13 @@ function App() {
       {activeLocation === 'Fremont' && (
         <>
           <PatientVolumeChart 
-            patientData={frPatientVolume} 
-            location='Fremont'
+            {...{patientData: frPatientVolume, location: 'Fremont'}}
           />
           <PatientVolumeForm 
-            labels={frPatientData.labels} 
-            data={frPatientData.datasets[0].data} 
+            labels={patientData.labels} 
+            data={frData} 
+            setData={setFrData}
+            onSubmit={handleFormSubmit}
             location='Fremont'
           />
         </>
@@ -68,12 +64,12 @@ function App() {
       {activeLocation === 'Dublin' && (
         <>
           <PatientVolumeChart 
-            patientData={dbPatientVolume} 
-            location='Dublin'
+            {...{patientData: dbPatientVolume, location: 'Dublin'}}
           />
           <PatientVolumeForm 
-            labels={dbPatientData.labels} 
-            data={dbPatientData.datasets[0].data}
+            labels={patientData.labels} 
+            data={dbData}
+            setData={setDbData}
             onSubmit={handleFormSubmit}
             location='Dublin'
           />
