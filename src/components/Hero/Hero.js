@@ -1,7 +1,7 @@
 import React from 'react'
 import './Hero.css';
 
-function Hero() {
+function Hero({onLocationSelect}) {
   return (
     <div className='Hero'>
       <h1>Patient Volume Visualizer</h1>
@@ -10,7 +10,7 @@ function Hero() {
       </p>
       <span>
         <h2>Active Clinic</h2>
-        <select>
+        <select onChange={(event) => onLocationSelect(event.target.value)}>
           <option value="" disabled selected>Please choose a clinic</option>
           <option value="Fremont">Fremont</option>
           <option value="Dublin">Dublin</option>
