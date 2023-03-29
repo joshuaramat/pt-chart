@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PatientVolumeChart from './components/PatientVolumeChart';
 import PatientVolumeForm from './components/PatientVolumeForm';
 import Hero from './components/Hero/Hero';
+import Navigation from './components/Navigation/Navigation';
 
 import patientData from './data/patientData';
 
@@ -44,6 +45,7 @@ function App() {
 
   return (
     <div>
+      <Navigation onLocationSelect={setActiveLocation} />
       <Hero onLocationSelect={setActiveLocation} />
 
       {activeLocation === 'Fremont' && (
