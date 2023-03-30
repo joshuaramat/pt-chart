@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PatientVolumeChart from './components/PatientVolumeChart';
-import PatientVolumeForm from './components/PatientVolumeForm';
+import PatientVolumeForm from './components/PatientVolumeForm/PatientVolumeForm';
 import Hero from './components/Hero/Hero';
 import Navigation from './components/Navigation/Navigation';
 
