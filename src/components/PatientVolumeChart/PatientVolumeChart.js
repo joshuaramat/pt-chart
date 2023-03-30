@@ -10,7 +10,19 @@ ChartJS.register(
 )
 
 const PatientVolumeChart = ({patientData, location}) => {
-  const options = {}
+  const options = {
+    maintainAspectRation: false,
+    borderRadius: 10,
+    scales: {
+      y: {
+        suggestedMax: Math.max(...patientData.datasets[0].data) + 1,
+        ticks: {
+          stepSize: 1,
+          precision: 0,
+        }
+      }
+    }
+  }
 
   return (
     <div className='PatientvolumeChart'>
@@ -19,8 +31,9 @@ const PatientVolumeChart = ({patientData, location}) => {
       </h1>
       <Bar
         data = { patientData }
+        width={100}
+        height={35}
         options = { options }
-        style={{ maxWidth: '95%' }}
       />
     </div>
   )
