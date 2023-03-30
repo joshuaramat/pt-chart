@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PatientVolumeChart from './components/PatientVolumeChart';
+import PatientVolumeChart from './components/PatientVolumeChart/PatientVolumeChart';
 import PatientVolumeForm from './components/PatientVolumeForm/PatientVolumeForm';
 import Hero from './components/Hero/Hero';
 import Navigation from './components/Navigation/Navigation';
@@ -61,7 +61,8 @@ function App() {
       {activeLocation === 'Fremont' && (
         <>
           <PatientVolumeChart 
-            {...{patientData: frPatientVolume, location: 'Fremont'}}
+            patientData={frPatientVolume}
+            location='Fremont'
           />
           <PatientVolumeForm 
             labels={patientData.labels} 
@@ -76,14 +77,15 @@ function App() {
       {activeLocation === 'Dublin' && (
         <>
           <PatientVolumeChart 
-            {...{patientData: dbPatientVolume, location: 'Dublin'}}
+            patientData={dbPatientVolume}
+            location={activeLocation}
           />
           <PatientVolumeForm 
             labels={patientData.labels} 
             data={dbData}
             setData={setDbData}
             onSubmit={handleFormSubmit}
-            location='Dublin'
+            location={activeLocation}
           />
         </>
       )}

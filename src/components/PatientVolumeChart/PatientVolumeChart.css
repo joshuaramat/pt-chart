@@ -1,0 +1,14 @@
+.PatientvolumeChart {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.25rem;
+}
+
+.PatientvolumeChart h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-normal);
+  color: #007bff;
+  margin-bottom: 1rem;
+}
