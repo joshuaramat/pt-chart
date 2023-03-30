@@ -9,16 +9,16 @@ import patientData from './data/patientData';
 function App() {
   const [frData, setFrData] = useState(patientData.datasets[0].data);
   const [dbData, setDbData] = useState(patientData.datasets[0].data);
-  const [frPatientVolume, setFrPatientVolume] = useState(
-    localStorage.getItem('frPatientVolume')
-      ? JSON.parse(localStorage.getItem('frPatientVolume'))
-      : patientData
-  );
-  const [dbPatientVolume, setDbPatientVolume] = useState(
-    localStorage.getItem('dbPatientVolume')
-      ? JSON.parse(localStorage.getItem('dbPatientVolume'))
-      : patientData
-  );
+
+  const [FremontPatientVolume, setFremontPatientVolume] = useState(() => {
+    const savedData = localStorage.getItem('FremontPatientVolume');
+    return savedData ? JSON.parse(savedData) : patientData;
+  });
+  const [DublinPatientVolume, setDublinPatientVolume] = useState(() => {
+    const savedData = localStorage.getItem('DublinPatientVolume');
+    return savedData ? JSON.parse(savedData) : patientData;
+  });
+  
   const [activeLocation, setActiveLocation] = useState('');
 
   function updatePatientVolume(location, newData, setPatientVolume, patientVolumeData) {
@@ -37,9 +37,9 @@ function App() {
   
   const handleFormSubmit = (location, newData) => {
     if (location === 'Fremont') {
-      updatePatientVolume(location, newData, setFrPatientVolume, frPatientVolume);
+      updatePatientVolume(location, newData, setFremontPatientVolume, FremontPatientVolume);
     } else if (location === 'Dublin') {
-      updatePatientVolume(location, newData, setDbPatientVolume, dbPatientVolume);
+      updatePatientVolume(location, newData, setDublinPatientVolume, DublinPatientVolume);
     }
   };
 
@@ -61,15 +61,15 @@ function App() {
       {activeLocation === 'Fremont' && (
         <>
           <PatientVolumeChart 
-            patientData={frPatientVolume}
-            location='Fremont'
+            patientData={FremontPatientVolume}
+            location={activeLocation}
           />
           <PatientVolumeForm 
             labels={patientData.labels} 
             data={frData} 
             setData={setFrData}
             onSubmit={handleFormSubmit}
-            location='Fremont'
+            location={activeLocation}
           />
         </>
       )}
@@ -77,7 +77,7 @@ function App() {
       {activeLocation === 'Dublin' && (
         <>
           <PatientVolumeChart 
-            patientData={dbPatientVolume}
+            patientData={DublinPatientVolume}
             location={activeLocation}
           />
           <PatientVolumeForm 
