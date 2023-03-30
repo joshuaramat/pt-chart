@@ -1,0 +1,51 @@
+/* Set global font properties */
+:root {
+  --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-weight-normal: 400;
+}
+
+/* Style the PatientVolumeForm */
+.PatientVolumeForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+}
+
+/* Style the label of the input field */
+.PatientVolumeForm label {
+  font-size: 1rem;
+  color: #333;
+  margin-right: 1rem;
+}
+
+/* Style the input field */
+.PatientVolumeForm input {
+  width: 2rem;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  color: #333;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  padding: 0.5rem;
+}
+
+/* Style the submit button */
+.PatientVolumeForm button[type='submit'] {
+  background-color: #007bff;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-normal);
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.PatientVolumeForm button[type='submit']:hover {
+  background-color: #0069d9;
+}

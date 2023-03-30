@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './PatientVolumeForm.css';
 
 const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
   const [patientVolume, setPatientVolume] = useState(data);
@@ -24,6 +25,7 @@ const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
 
   return (
     <form 
+      className='PatientVolumeForm'
       onSubmit={handleSubmit}
       style={{
         display: 'flex',
