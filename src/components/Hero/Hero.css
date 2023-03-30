@@ -1,3 +1,12 @@
+/* Set global font properties */
+:root {
+  --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --line-height-normal: 1.5;
+}
+
+/* Style the Hero section */
 .Hero {
   padding: 3rem 1rem;
   margin-bottom: 2rem;
@@ -5,31 +14,29 @@
   border-radius: 0.25rem;
 }
 
+/* Style the Hero heading, subheading, and paragraph */
+.Hero h1, .Hero h3, .Hero p {
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  margin-bottom: 1rem;
+}
+
 .Hero h1 {
   font-size: 3.5rem;
-  font-weight: 300;
-  line-height: 1.2;
   color: #007bff;
-  margin-bottom: 1rem;
+}
+
+.Hero h3 {
+  font-size: 2rem;
 }
 
 .Hero p {
   font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-  margin-bottom: 2rem;
-}
-
-.Hero h2 {
-  font-size: 2.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-  margin-bottom: 1rem;
 }
 
 /* Style the label of the Form.Group */
 #formClinicSelect label {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   font-size: 1.2rem;
   color: #333;
 }
@@ -38,16 +45,17 @@
 #formClinicSelect select.form-control {
   width: 100%;
   font-size: 1rem;
+  font-family: var(--font-family);
   color: #333;
 }
 
-/* Style the selected option in the select element */
+/* Style the selected and disabled options in the select element */
+#formClinicSelect select.form-control option:checked,
+#formClinicSelect select.form-control option:disabled {
+  color: #ccc;
+}
+
 #formClinicSelect select.form-control option:checked {
   background-color: #007bff;
   color: #fff;
-}
-
-/* Style the disabled option in the select element */
-#formClinicSelect select.form-control option:disabled {
-  color: #ccc;
 }

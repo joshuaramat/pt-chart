@@ -1,27 +1,30 @@
 .Navbar {
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 1rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  font-size: 2rem;
-  color: #333;
-}
-
-/* .Form.Group {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  flex-wrap: nowrap;
-  margin-left: auto;
-  margin-right: 0;
+  padding: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 2rem;
 }
 
-.Form.Control {
-  width: 10rem;
+img {
+  max-height: 40px;
+  filter: brightness(100);
+}
+
+#formClinicSelect {
+  display: flex;
   font-size: 1rem;
   color: #333;
-  display: flex;
-  align-items: center;
-} */
+  margin-left: 1rem;
+  width: 10rem;
+  background-color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 0.5rem;
+  padding: 0.125rem 0.5rem;
+}
+
+#formClinicSelect label {
+  display: none;
+}

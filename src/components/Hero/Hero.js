@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import './Hero.css';
 
-function Hero({ onLocationSelect }) {
+function Hero({ onLocationSelect, activeLocation }) {
   return (
     <Container className='Hero'>
       <Row>
@@ -16,9 +16,9 @@ function Hero({ onLocationSelect }) {
       <Row>
         <Col md={{ span: 3 }}>
           <Form.Group controlId='formClinicSelect'>
-            <Form.Label><h2>Active Clinic</h2></Form.Label>
-            <Form.Control as='select' onChange={(event) => onLocationSelect(event.target.value)}>
-              <option value="" disabled selected>Please choose a clinic</option>
+            <Form.Label><h3>Choose a location:</h3></Form.Label>
+            <Form.Control as='select' value={activeLocation} onChange={(event) => onLocationSelect(event.target.value)}>
+              <option value="" disabled selected>Active Clinic</option>
               <option value="Fremont">Fremont</option>
               <option value="Dublin">Dublin</option>
             </Form.Control>

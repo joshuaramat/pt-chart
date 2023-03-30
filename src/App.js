@@ -43,10 +43,20 @@ function App() {
     }
   };
 
+  const handleLocationSelect = (location) => {
+    setActiveLocation(location);
+  }
+
   return (
     <div>
-      <Navigation onLocationSelect={setActiveLocation} />
-      <Hero onLocationSelect={setActiveLocation} />
+      <Navigation 
+        onLocationSelect={handleLocationSelect}
+        activeLocation={activeLocation}
+      />
+      <Hero
+        onLocationSelect={handleLocationSelect}
+        activeLocation={activeLocation}
+      />
 
       {activeLocation === 'Fremont' && (
         <>

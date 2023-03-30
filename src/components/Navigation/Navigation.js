@@ -2,13 +2,16 @@ import React from 'react';
 import { Navbar, Nav, Form } from 'react-bootstrap';
 import './navigation.css';
 
-function Navigation({ onLocationSelect }) {
+function Navigation({ onLocationSelect, activeLocation }) {
   return (
     <Navbar className='Navbar' bg='light' variant='light'>
-      <Navbar.Brand>PT Visualizer</Navbar.Brand>
+      <div>
+        <img src="logo.png" alt='logo' className='mr-2' />
+        {/* <Navbar.Brand>Visualizer</Navbar.Brand> */}
+      </div>
       <Nav className='mr-auto'></Nav>
       <Form.Group controlId='formClinicSelect'>
-        <Form.Control as='select' onChange={(event) => onLocationSelect(event.target.value)}>
+        <Form.Control as='select' value={activeLocation} onChange={(event) => onLocationSelect(event.target.value)}>
           <option value="" disabled selected>Active Clinic</option>
           <option value="Fremont">Fremont</option>
           <option value="Dublin">Dublin</option>
