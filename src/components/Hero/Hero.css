@@ -1,50 +1,61 @@
+/* Set global font properties */
 :root {
-  --bs-light: #f8f9fa;
-  --bs-dark: #212529;
-  --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --line-height-normal: 1.5;
 }
 
+/* Style the Hero section */
 .Hero {
-  background-color: var(--bs-light);
-  font-family: var(--bs-font-sans-serif);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--bs-dark);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100%;
-  max-width: 800%;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+}
+
+/* Style the Hero heading, subheading, and paragraph */
+.Hero h1, .Hero h3, .Hero p {
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  margin-bottom: 1rem;
 }
 
 .Hero h1 {
-  font-size: 3rem;
-  margin: 1rem 0;
-  line-height: 1.2;
+  font-size: 3.5rem;
+  color: #007bff;
 }
 
-p {
-  max-width: 61.8%;
+.Hero h3 {
+  font-size: 2rem;
 }
 
-span {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.Hero p {
+  font-size: 1.5rem;
 }
 
-h2 {
-  margin-bottom: 0.5rem;
+/* Style the label of the Form.Group */
+#formClinicSelect label {
+  font-weight: var(--font-weight-bold);
+  font-size: 1.2rem;
+  color: #333;
 }
 
-select {
-  padding: 0.5rem;
+/* Style the select element in the Form.Group */
+#formClinicSelect select.form-control {
+  width: 100%;
   font-size: 1rem;
+  font-family: var(--font-family);
+  color: #333;
 }
 
+/* Style the selected and disabled options in the select element */
+#formClinicSelect select.form-control option:checked,
+#formClinicSelect select.form-control option:disabled {
+  color: #ccc;
+}
+
+#formClinicSelect select.form-control option:checked {
+  background-color: #007bff;
+  color: #fff;
+}
