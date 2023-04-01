@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PatientVolumeChart from './components/PatientVolumeChart/PatientVolumeChart';
 import PatientVolumeForm from './components/PatientVolumeForm/PatientVolumeForm';
 import Hero from './components/Hero/Hero';
@@ -7,8 +7,10 @@ import Navigation from './components/Navigation/Navigation';
 import patientData from './data/patientData';
 
 function App() {
-  const [frData, setFrData] = useState(patientData.datasets[0].data);
-  const [dbData, setDbData] = useState(patientData.datasets[0].data);
+  const defaultData = patientData.datasets[0].data;
+
+  const [frData, setFrData] = useState(defaultData);
+  const [dbData, setDbData] = useState(defaultData);
 
   const [FremontPatientVolume, setFremontPatientVolume] = useState(() => {
     const savedData = localStorage.getItem('FremontPatientVolume');
@@ -21,7 +23,7 @@ function App() {
   
   const [activeLocation, setActiveLocation] = useState('');
 
-  function updatePatientVolume(location, newData, setPatientVolume, patientVolumeData) {
+  function UpdatePatientVolume(location, newData, setPatientVolume, patientVolumeData) {
     const newPatientVolume = {
       ...patientVolumeData,
       datasets: [
@@ -31,15 +33,21 @@ function App() {
         }
       ]
     };
-    setPatientVolume(newPatientVolume);
-    localStorage.setItem(`${location}PatientVolume`, JSON.stringify(newPatientVolume));
+  
+    useEffect(() => {
+      localStorage.setItem(`${location}PatientVolume`, JSON.stringify(newPatientVolume));
+      setPatientVolume(newPatientVolume);
+    }, [location, newPatientVolume, setPatientVolume]);
+  
+    return newPatientVolume;
   }
+  
   
   const handleFormSubmit = (location, newData) => {
     if (location === 'Fremont') {
-      updatePatientVolume(location, newData, setFremontPatientVolume, FremontPatientVolume);
+      UpdatePatientVolume(location, newData, setFremontPatientVolume, FremontPatientVolume);
     } else if (location === 'Dublin') {
-      updatePatientVolume(location, newData, setDublinPatientVolume, DublinPatientVolume);
+      UpdatePatientVolume(location, newData, setDublinPatientVolume, DublinPatientVolume);
     }
   };
 
@@ -53,10 +61,12 @@ function App() {
         onLocationSelect={handleLocationSelect}
         activeLocation={activeLocation}
       />
+      {activeLocation === '' && (
       <Hero
         onLocationSelect={handleLocationSelect}
         activeLocation={activeLocation}
       />
+    )}
 
       {activeLocation === 'Fremont' && (
         <>
