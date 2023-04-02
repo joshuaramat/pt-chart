@@ -19,8 +19,6 @@ const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(location, patientVolume);
-    console.log('handleSubmit called')
-    console.log('patientVolume', patientVolume)
   };
 
   return (

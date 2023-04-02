@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PatientVolumeChart from './components/PatientVolumeChart/PatientVolumeChart';
 import PatientVolumeForm from './components/PatientVolumeForm/PatientVolumeForm';
 import Hero from './components/Hero/Hero';
@@ -23,7 +23,7 @@ function App() {
   
   const [activeLocation, setActiveLocation] = useState('');
 
-  function UpdatePatientVolume(location, newData, setPatientVolume, patientVolumeData) {
+  function updatePatientVolume(location, newData, setPatientVolume, patientVolumeData) {
     const newPatientVolume = {
       ...patientVolumeData,
       datasets: [
@@ -33,11 +33,9 @@ function App() {
         }
       ]
     };
-  
-    useEffect(() => {
-      localStorage.setItem(`${location}PatientVolume`, JSON.stringify(newPatientVolume));
-      setPatientVolume(newPatientVolume);
-    }, [location, newPatientVolume, setPatientVolume]);
+
+    localStorage.setItem(`${location}PatientVolume`, JSON.stringify(newPatientVolume));
+    setPatientVolume(newPatientVolume);
   
     return newPatientVolume;
   }
@@ -45,9 +43,9 @@ function App() {
   
   const handleFormSubmit = (location, newData) => {
     if (location === 'Fremont') {
-      UpdatePatientVolume(location, newData, setFremontPatientVolume, FremontPatientVolume);
+      updatePatientVolume(location, newData, setFremontPatientVolume, FremontPatientVolume);
     } else if (location === 'Dublin') {
-      UpdatePatientVolume(location, newData, setDublinPatientVolume, DublinPatientVolume);
+      updatePatientVolume(location, newData, setDublinPatientVolume, DublinPatientVolume);
     }
   };
 
