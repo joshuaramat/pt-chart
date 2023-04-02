@@ -5,18 +5,21 @@ import './navigation.css';
 function Navigation({ onLocationSelect, activeLocation }) {
   return (
     <Navbar className='Navbar' bg='light' variant='light'>
-      <div>
-        <img src="logo.png" alt='logo' className='mr-2' />
-        {/* <Navbar.Brand>Visualizer</Navbar.Brand> */}
+      <div className='logo-container'>
+        <img src="logo.png" alt='logo' className='mr-2 logo-img' />
+        {!activeLocation ? (null) : (<Navbar.Brand className='brand-text'>ClinicFlow</Navbar.Brand>)}
       </div>
-      <Nav className='mr-auto'></Nav>
-      <Form.Group controlId='formClinicSelect'>
-        <Form.Control as='select' value={activeLocation} onChange={(event) => onLocationSelect(event.target.value)}>
-          <option value="" disabled selected>Active Clinic</option>
-          <option value="Fremont">Fremont</option>
-          <option value="Dublin">Dublin</option>
-        </Form.Control>
-      </Form.Group>
+      {!activeLocation ?
+        (null)
+        :
+        (<Form.Group controlId='formClinicSelect'>
+            <Form.Control as='select' value={activeLocation} onChange={(event) => onLocationSelect(event.target.value)}>
+              <option value="" disabled selected>Active Clinic</option>
+              <option value="Fremont">Fremont</option>
+              <option value="Dublin">Dublin</option>
+            </Form.Control>
+          </Form.Group>)
+      }
     </Navbar>
   );
 }
