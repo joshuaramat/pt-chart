@@ -1,6 +1,11 @@
 # Physical Therapy Appointment Visualization App
 The Physical Therapy Appointment Visualization App is a web-based application designed to help physical therapy staff at the Sutter Palo Alto Medical Foundation visualize the volume of patients scheduled in a given hour between 7:00 AM and 7:00 PM. The app provides an interface to manually input patient data, and a visualization of appointment data in the form of a bar graph.
 
+![screenshot](./public/screenshot.png)
+
+### Link
+[Physical Therapy Visualization App](https://pt-chart.netlify.app/)
+
 ### Target Users
 Physical therapy staff members at the Sutter Palo Alto Medical Foundation.
 
