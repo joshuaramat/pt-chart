@@ -24,28 +24,40 @@
 
 /* Style the input field */
 .PatientVolumeForm input {
+  display: flex;
   width: 2rem;
   font-size: 1rem;
   font-family: var(--font-family);
-  color: #333;
+  color: #38485a;
   border-radius: 0.25rem;
   border: 1px solid #ced4da;
-  padding: 0.5rem;
+  padding: 0.5rem .75rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  gap: 0.5rem;
 }
 
 /* Style the submit button */
 .PatientVolumeForm button[type='submit'] {
-  background-color: #007bff;
+  background-color: #38485a;
   border-radius: 0.5rem;
   color: #fff;
   font-size: 1.2rem;
   font-weight: var(--font-weight-normal);
-  padding: 0.5rem 1rem;
+  padding: 1rem 3rem;
   margin-left: 1rem;
   border: none;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .PatientVolumeForm button[type='submit']:hover {
-  background-color: #0069d9;
+  background-color: #54b5a7;
+  transition: ease 300ms;
+}
+
+@media only screen and (max-height: 900px) {
+  .input-container {
+    display: flex;
+    flex-direction: column;
+  }
 }

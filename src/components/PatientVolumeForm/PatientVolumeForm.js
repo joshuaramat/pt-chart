@@ -25,21 +25,14 @@ const PatientVolumeForm = ({ labels, data, location, onSubmit }) => {
     <form 
       className='PatientVolumeForm'
       onSubmit={handleSubmit}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: '0 auto',
-        padding: '2rem'
-      }}
     >
       {labels.map((label, index) => (
-        <div key={index}>
+        <div key={index} className='input-container'>
           <label htmlFor={`hour${index}`}>{label}</label>
           <input
             id={`hour${index}`}
             type="number"
-            min="0"
+            min=""
             max="999"
             value={patientVolume[index]}
             onChange={(event) => handleChange(event, index)}

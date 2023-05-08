@@ -3,9 +3,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #007bff;
+  background-color: #f8f9fa;
   color: #fff;
   font-size: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .logo-container {
@@ -16,13 +17,12 @@
 .logo-img {
   margin-right: 1rem;
   max-height: 35px;
-  filter: brightness(100);
 }
 
 .brand-text {
   font-size: 2rem;
   font-weight: 500;
-  color: #fff;
+  color: #38485a;
   margin-left: 10px;
   padding: 0;
 }
@@ -37,6 +37,7 @@
   border: 1px solid #007bff;
   border-radius: 0.5rem;
   padding: 0.125rem 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 #formClinicSelect label {

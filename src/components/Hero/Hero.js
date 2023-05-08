@@ -7,16 +7,16 @@ function Hero({ onLocationSelect, activeLocation }) {
     <Container className='Hero'>
       <Row>
         <Col>
-          <h1>ClinicFlow</h1>
-          <p>
+          <h1 className='title'>ClinicFlow</h1>
+          <p className='description'>
             With just a few clicks, you can access valuable data for both Fremont and Dublin locations. Say goodbye to the hassle of manual scheduling and hello to easy, data-driven decisions. We're excited to offer this tool to streamline our internal processes and help our team work more efficiently. So go ahead and dive in, the data is waiting for you!
           </p>
         </Col>
       </Row>
       <Row>
         <Col md={{ span: 3 }}>
-          <Form.Group controlId='formClinicSelect'>
-            <Form.Label><h3>Choose a location:</h3></Form.Label>
+          <Form.Group controlId='formClinicSelect' className='form-group'>
+            <Form.Label><p>Choose a location</p></Form.Label>
             <Form.Control as='select' value={activeLocation} onChange={(event) => onLocationSelect(event.target.value)}>
               <option value="" disabled selected>Active Clinic</option>
               <option value="Fremont">Fremont</option>

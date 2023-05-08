@@ -4,11 +4,11 @@ const patientData = {
     {
       label: "Patient Volume Today",
       data: [],
-      backgroundColor: "rgba(0, 123, 255, 0.8)",
-      borderColor: "rgba(0, 87, 162, 1)",
+      backgroundColor: "rgba(56, 72, 90, 1)",
+      borderColor: "rgba(56, 72, 90, 1)",
       borderWidth: 1,
-      hoverBackgroundColor: "rgba(0, 87, 162, 1)",
-      hoverBorderColor: "rgba(0, 39, 76, 1)",
+      hoverBackgroundColor: "rgba(84, 181, 167, 1)",
+      hoverBorderColor: "rgba(84, 181, 167, 1)",
     },
   ],
 };
